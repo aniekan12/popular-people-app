@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:popular_people_app/managers/app_state_manager.dart';
 import 'package:popular_people_app/nav/pages.dart';
-import 'package:popular_people_app/ui/views/people/view.dart';
+import 'package:popular_people_app/route.dart';
 
 class AppRouter extends RouterDelegate
     with ChangeNotifier, PopNavigatorRouterDelegateMixin {
