@@ -24,7 +24,9 @@ class _PeopleViewState extends State<PeopleView> {
     return BaseView<PeopleViewModel>(
       model: PeopleViewModel(),
       onModelReady: (model) => model.init(context),
-      builder: (context, model, _) => Scaffold(),
+      builder: (context, model, _) => Scaffold(
+        body: Container(),
+      ),
     );
   }
 }

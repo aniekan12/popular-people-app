@@ -13,9 +13,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   provider:
   dio:
+  infinite_scroll_pagination:
   flutter_pretty_dio_logger:
-  loadmore:
   google_fonts:
+  http:
 
 dev_dependencies:
   flutter_test:

@@ -45,3 +45,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+#this has the api key, so i'm ignoring it, i'll leave a link to where you can download it
+lib/vault/vault.dart
