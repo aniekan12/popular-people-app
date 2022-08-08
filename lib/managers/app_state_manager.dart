@@ -48,32 +48,45 @@ class AppStateManager extends DisposableProvider {
     String url = Endpoints.fetchPopularPeople + param;
     Map resp = await ApiHelpers.makeGetRequest(url, headers: {});
     if (resp['page'].isNotEmpty) {
-      if (page == 1) {
-        _totalNumberOfPeople = 0;
-      }
-      if (resp['results'].isNotEmpty) {
-        List<PopularPeopleModel> ourPopularPeople = resp['results']
-            .map<PopularPeopleModel>((e) => PopularPeopleModel.fromJson(e))
-            .toList();
-        _totalNumberOfPeople = resp['results']['total_results'];
-        _currentPopularPeople = ourPopularPeople;
-        if (page > 1) {
-          _popularPeople.addAll(ourPopularPeople);
-        } else {
-          _popularPeople = ourPopularPeople;
-        }
-        notifyListeners();
-      } else {
-        if (_totalNumberOfPeople == 0) {
-          _popularPeople = [];
-          _currentPopularPeople = [];
-        }
-      }
+      checkpageNumber(page, resp);
     } else {
       _transactionError =
           resp['status_message'] ?? 'Error fetching popular people';
     }
     return resp['status_message'];
+  }
+
+  void checkpageNumber(int page, Map<dynamic, dynamic> resp) {
+    if (page == 1) {
+      _totalNumberOfPeople = 0;
+    }
+    if (resp['results'].isNotEmpty) {
+      List<PopularPeopleModel> ourPopularPeople = setPopularPeopleList(resp);
+      if (page > 1) {
+        _popularPeople.addAll(ourPopularPeople);
+      } else {
+        _popularPeople = ourPopularPeople;
+      }
+      notifyListeners();
+    } else {
+      if (_totalNumberOfPeople == 0) {
+        setEmptyLists();
+      }
+    }
+  }
+
+  void setEmptyLists() {
+    _popularPeople = [];
+    _currentPopularPeople = [];
+  }
+
+  List<PopularPeopleModel> setPopularPeopleList(Map<dynamic, dynamic> resp) {
+    List<PopularPeopleModel> ourPopularPeople = resp['results']
+        .map<PopularPeopleModel>((e) => PopularPeopleModel.fromJson(e))
+        .toList();
+    _totalNumberOfPeople = resp['results']['total_results'];
+    _currentPopularPeople = ourPopularPeople;
+    return ourPopularPeople;
   }
 
   @override
