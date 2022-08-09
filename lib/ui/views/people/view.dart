@@ -29,10 +29,11 @@ class _PeopleViewState extends State<PeopleView> {
       onModelReady: (model) => model.init(context),
       builder: (context, model, _) => Scaffold(
         body: Column(
+          key: Key('peoples_view_column'),
           children: [
             Expanded(
               child: PagedListView(
-                key: const Key('links_paged_listview'),
+                key: const Key('peoples_view_paged_listview'),
                 pagingController: model.popularPeopleController,
                 builderDelegate: PagedChildBuilderDelegate<PopularPeopleModel>(
                   itemBuilder: (BuildContext context, item, int index) =>
@@ -51,12 +52,6 @@ class _PeopleViewState extends State<PeopleView> {
           ],
         ),
       ),
-    );
-  }
-
-  ListTile buildListTile(PopularPeopleModel item, int index) {
-    return ListTile(
-      title: Text(item.name!),
     );
   }
 }
