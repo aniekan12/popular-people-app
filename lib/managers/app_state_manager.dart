@@ -97,6 +97,10 @@ class AppStateManager extends DisposableProvider {
   @override
   void disposeValues() {
     _isInitialized = false;
+    _popularPeople = [];
+    _currentPopularPeople = [];
+    _popularPeopleModel = null;
+
     notifyListeners();
     SystemNavigator.pop();
   }
