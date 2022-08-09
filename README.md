@@ -18,8 +18,8 @@ And build the app with:
 flutter run
 ```
 
-#Download the ```vault.dart``` file which contains the api key,in the ```lib``` folder, create a folder called ```vault```
-#and add the file downloaded from google drive to the folder
+Download the ```vault.dart``` file which contains the api key,in the ```lib``` folder, create a folder called ```vault```
+and add the file downloaded from google drive to the folder
 https://drive.google.com/drive/folders/1ZRTGfXRihlKnekQRsTYetJAVfJjNmGG2?usp=sharing
 
 
