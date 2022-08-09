@@ -18,6 +18,8 @@ dependencies:
   http:
   cached_network_image:
   gallery_saver:
+  sqflite:
+  path_provider:
 
 
 
@@ -27,6 +29,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   mockito: ^5.2.0
   build_runner: ^2.2.0
+
 
 flutter:
 

@@ -44,6 +44,7 @@ class _PopularPeoplesDetailsState extends State<PopularPeoplesDetails> {
           child: ListView(
             children: [
               LargeNetworkImage(
+                key: const Key('peoples_details_image'),
                 imageUrl: widget.popularPeopleModel.profilePath!,
               ),
               const SizedBox(height: 10),

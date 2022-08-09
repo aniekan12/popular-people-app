@@ -4,8 +4,9 @@ import 'package:popular_people_app/utilities/utils/constants.dart';
 class LargeNetworkImage extends StatelessWidget {
   final String imageUrl;
   final double? size;
+  final Key? key;
 
-  const LargeNetworkImage({required this.imageUrl, this.size});
+  const LargeNetworkImage({required this.imageUrl, this.key, this.size});
 
   @override
   Widget build(BuildContext context) {

@@ -36,8 +36,8 @@ class AppStateManager extends DisposableProvider {
 
   List<PopularPeopleModel> _popularPeople = [];
   List<PopularPeopleModel> get popularPeople => _popularPeople;
-  set popularPeople(List<PopularPeopleModel> popularpeople) {
-    _popularPeople = popularpeople;
+  set popularPeople(List<PopularPeopleModel> popularPeople) {
+    _popularPeople = popularPeople;
     notifyListeners();
   }
 

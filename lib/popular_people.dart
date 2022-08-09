@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:popular_people_app/managers/app_state_manager.dart';
 import 'package:popular_people_app/managers/provider_setup.dart';
 import 'package:provider/provider.dart';

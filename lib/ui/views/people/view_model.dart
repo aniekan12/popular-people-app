@@ -32,7 +32,6 @@ class PeopleViewModel extends BaseViewModel {
         popularPeopleController.appendPage([], pageKey);
       }
     } catch (e) {
-      print(e);
       popularPeopleController.error = e;
     }
   }

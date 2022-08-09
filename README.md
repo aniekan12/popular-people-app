@@ -3,14 +3,24 @@
 A new Flutter project.
 
 ## Getting Started
+### Cloning the Repo
+* Click on the "Code" button on the Repo page.
+* Copy the URL for the Repo "https://github.com/aniekan12/irecharge_interview_task"
+* Open your code editor and run `git clone` "https://github.com/aniekan12/irecharge_interview_task.git"
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+Download dependencies with:
+```
+flutter pub get
+```
+And build the app with:
+```
+flutter run
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+#Download the ```vault.dart``` file which contains the api key,in the ```lib``` folder, create a folder called ```vault```
+#and add the file downloaded from google drive to the folder
+https://drive.google.com/drive/folders/1ZRTGfXRihlKnekQRsTYetJAVfJjNmGG2?usp=sharing
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+##Screenshots
