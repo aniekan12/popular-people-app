@@ -86,11 +86,8 @@ class _PopularPeoplesDetailsState extends State<PopularPeoplesDetails> {
               const SizedBox(height: 30),
               AppButton(
                 buttonText: "Save Image",
-                onTap: () async {
-                  print('working');
-                  await model.savePopularPersonsImageToGallery(
-                      "$largeImagesBaseUrl${widget.popularPeopleModel.profilePath}");
-                },
+                onTap: () async => await model.savePopularPersonsImageToGallery(
+                    "$largeImagesBaseUrl${widget.popularPeopleModel.profilePath}"),
               )
             ],
           ),

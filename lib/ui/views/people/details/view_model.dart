@@ -11,7 +11,7 @@ class PopularPeoplesDetailsViewModel extends BaseViewModel {
     String path = imageUrl;
     GallerySaver.saveImage(path).then((bool? success) {
       notifyListeners();
-      print(success);
+      if (success!) {}
     });
   }
 }
