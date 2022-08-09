@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gallery_saver/gallery_saver.dart';
 import 'package:popular_people_app/ui/base/base_view_model.dart';
+import 'package:popular_people_app/utilities/utils/flush_bar.dart';
 
 class PopularPeoplesDetailsViewModel extends BaseViewModel {
   onInit(BuildContext ctx) {
@@ -8,10 +9,13 @@ class PopularPeoplesDetailsViewModel extends BaseViewModel {
   }
 
   savePopularPersonsImageToGallery(String imageUrl) async {
-    String path = imageUrl;
-    GallerySaver.saveImage(path).then((bool? success) {
+    GallerySaver.saveImage(imageUrl).then((bool? success) {
       notifyListeners();
-      if (success!) {}
+      if (success!) {
+        ACFlushBar.success(context: appContext, message: 'Image Saved!');
+      } else {
+        ACFlushBar.error(context: appContext);
+      }
     });
   }
 }
