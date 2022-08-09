@@ -23,3 +23,4 @@ https://drive.google.com/drive/folders/1ZRTGfXRihlKnekQRsTYetJAVfJjNmGG2?usp=sha
 
 
 Screenshots
+![Simulator Screen Shot - iPhone 11 - 2022-08-09 at 15 29 00](https://user-images.githubusercontent.com/45481950/183675431-194d026e-5674-4794-b52f-9d5bd0b96643.png)
