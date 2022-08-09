@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:popular_people_app/models/popular_people_model.dart';
 import 'package:popular_people_app/nav/pages.dart';
 import 'package:popular_people_app/ui/base/base_view.dart';
 import 'package:popular_people_app/ui/views/people/view_model.dart';
+import 'package:popular_people_app/ui/views/people/widgets/popular_peoples_card.dart';
 
 class PeopleView extends StatefulWidget {
   static MaterialPage page() {
@@ -25,8 +28,35 @@ class _PeopleViewState extends State<PeopleView> {
       model: PeopleViewModel(),
       onModelReady: (model) => model.init(context),
       builder: (context, model, _) => Scaffold(
-        body: Container(),
+        body: Column(
+          children: [
+            Expanded(
+              child: PagedListView(
+                key: const Key('links_paged_listview'),
+                pagingController: model.popularPeopleController,
+                builderDelegate: PagedChildBuilderDelegate<PopularPeopleModel>(
+                  itemBuilder: (BuildContext context, item, int index) =>
+                      PopularPeoplesCard(popularPeopleModel: item),
+                  noItemsFoundIndicatorBuilder: (_) =>
+                      const Center(child: Text("No popular person found")),
+                  noMoreItemsIndicatorBuilder: (_) => const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Center(
+                      child: Text("No more popular people found"),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
+    );
+  }
+
+  ListTile buildListTile(PopularPeopleModel item, int index) {
+    return ListTile(
+      title: Text(item.name!),
     );
   }
 }

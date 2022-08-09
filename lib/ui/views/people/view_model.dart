@@ -12,6 +12,8 @@ class PeopleViewModel extends BaseViewModel {
   void init(BuildContext ctx) {
     appContext = ctx;
     appStateManager = Provider.of<AppStateManager>(ctx, listen: false);
+
+    popularPeopleController.addPageRequestListener(fetchPopularPeople);
   }
 
   Future fetchPopularPeople(int pageKey) async {

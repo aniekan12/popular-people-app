@@ -11,12 +11,14 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  provider:
-  dio:
-  infinite_scroll_pagination:
-  flutter_pretty_dio_logger:
   google_fonts:
+  provider:
+  infinite_scroll_pagination:
   http:
+  cached_network_image:
+  gallery_saver:
+
+
 
 dev_dependencies:
   flutter_test:

@@ -27,6 +27,13 @@ class AppStateManager extends DisposableProvider {
     notifyListeners();
   }
 
+  PopularPeopleModel? _popularPeopleModel;
+  PopularPeopleModel? get popularPeopleModel => _popularPeopleModel;
+  set popularPeopleModel(PopularPeopleModel? popularPeopleModel) {
+    _popularPeopleModel = popularPeopleModel;
+    notifyListeners();
+  }
+
   List<PopularPeopleModel> _popularPeople = [];
   List<PopularPeopleModel> get popularPeople => _popularPeople;
   set popularPeople(List<PopularPeopleModel> popularpeople) {
@@ -42,25 +49,23 @@ class AppStateManager extends DisposableProvider {
   }
 
   Future<bool> fetchPopularPeople({int page = 1}) async {
-    String param =
-        '/3/person/popular?api_key=$apiKey&language=en-US&page=$page';
+    String param = '?api_key=$apiKey&language=en-US&page=$page';
 
     String url = Endpoints.fetchPopularPeople + param;
     Map resp = await ApiHelpers.makeGetRequest(url, headers: {});
-    if (resp['page'].isNotEmpty) {
-      checkpageNumber(page, resp);
+    if (resp['status']) {
+      checkPageNumber(page, resp);
     } else {
-      _transactionError =
-          resp['status_message'] ?? 'Error fetching popular people';
+      _transactionError = resp['message'] ?? 'Error fetching popular people';
     }
-    return resp['status_message'];
+    return resp['status'];
   }
 
-  void checkpageNumber(int page, Map<dynamic, dynamic> resp) {
+  void checkPageNumber(int page, Map<dynamic, dynamic> resp) {
     if (page == 1) {
       _totalNumberOfPeople = 0;
     }
-    if (resp['results'].isNotEmpty) {
+    if (resp['data']['results'].isNotEmpty) {
       List<PopularPeopleModel> ourPopularPeople = setPopularPeopleList(resp);
       if (page > 1) {
         _popularPeople.addAll(ourPopularPeople);
@@ -81,10 +86,10 @@ class AppStateManager extends DisposableProvider {
   }
 
   List<PopularPeopleModel> setPopularPeopleList(Map<dynamic, dynamic> resp) {
-    List<PopularPeopleModel> ourPopularPeople = resp['results']
+    List<PopularPeopleModel> ourPopularPeople = resp['data']['results']
         .map<PopularPeopleModel>((e) => PopularPeopleModel.fromJson(e))
         .toList();
-    _totalNumberOfPeople = resp['results']['total_results'];
+    _totalNumberOfPeople = resp['data']['total_results'];
     _currentPopularPeople = ourPopularPeople;
     return ourPopularPeople;
   }

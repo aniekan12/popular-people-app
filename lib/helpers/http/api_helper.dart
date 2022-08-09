@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:popular_people_app/helpers/constants.dart';
 
@@ -16,7 +15,6 @@ class ApiHelpers {
   }) async {
     var uri = Uri.parse(url);
     var resp = {};
-    log('Sending get request to $url');
     try {
       http.Response response = await get(uri, headers!);
       resp = responseCheck(response, resp);
@@ -44,7 +42,8 @@ class ApiHelpers {
         'data': {'status': false, 'data': {}, 'message': e.toString()},
         'message': "Something went wrong. Please try again later.",
       };
-    } catch (e) {
+    } catch (e, s) {
+      log(s.toString());
       resp = {
         'status': false,
         'data': {'status': false, 'data': {}, 'message': e.toString()},
@@ -76,12 +75,9 @@ class ApiHelpers {
     http.Response response = await http
         .get(
           uri,
-          headers: headers ?? {},
         )
         .timeout(const Duration(milliseconds: AppConstants.connectTimeout));
-    if (kDebugMode) {
-      log(response.body);
-    }
+
     return response;
   }
 }

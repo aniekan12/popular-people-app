@@ -1,47 +1,14 @@
 class PopularPeopleModel {
-  int? page;
-  List<Results>? results;
-  int? totalPages;
-  int? totalResults;
-
-  PopularPeopleModel(
-      {this.page, this.results, this.totalPages, this.totalResults});
-
-  PopularPeopleModel.fromJson(Map<String, dynamic> json) {
-    page = json['page'];
-    if (json['results'] != null) {
-      results = <Results>[];
-      json['results'].forEach((v) {
-        results!.add(Results.fromJson(v));
-      });
-    }
-    totalPages = json['total_pages'];
-    totalResults = json['total_results'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['page'] = page;
-    if (results != null) {
-      data['results'] = results!.map((v) => v.toJson()).toList();
-    }
-    data['total_pages'] = totalPages;
-    data['total_results'] = totalResults;
-    return data;
-  }
-}
-
-class Results {
   bool? adult;
-  int? gender;
-  int? id;
+  num? gender;
+  num? id;
   List<KnownFor>? knownFor;
   String? knownForDepartment;
   String? name;
-  double? popularity;
+  num? popularity;
   String? profilePath;
 
-  Results(
+  PopularPeopleModel(
       {this.adult,
       this.gender,
       this.id,
@@ -51,7 +18,7 @@ class Results {
       this.popularity,
       this.profilePath});
 
-  Results.fromJson(Map<String, dynamic> json) {
+  PopularPeopleModel.fromJson(Map<String, dynamic> json) {
     adult = json['adult'];
     gender = json['gender'];
     id = json['id'];
@@ -87,7 +54,7 @@ class KnownFor {
   bool? adult;
   String? backdropPath;
   List<int>? genreIds;
-  int? id;
+  num? id;
   String? mediaType;
   String? originalLanguage;
   String? originalTitle;
@@ -96,12 +63,8 @@ class KnownFor {
   String? releaseDate;
   String? title;
   bool? video;
-  double? voteAverage;
-  int? voteCount;
-  String? firstAirDate;
-  String? name;
-  List<String>? originCountry;
-  String? originalName;
+  num? voteAverage;
+  num? voteCount;
 
   KnownFor(
       {this.adult,
@@ -117,11 +80,7 @@ class KnownFor {
       this.title,
       this.video,
       this.voteAverage,
-      this.voteCount,
-      this.firstAirDate,
-      this.name,
-      this.originCountry,
-      this.originalName});
+      this.voteCount});
 
   KnownFor.fromJson(Map<String, dynamic> json) {
     adult = json['adult'];
@@ -138,10 +97,6 @@ class KnownFor {
     video = json['video'];
     voteAverage = json['vote_average'];
     voteCount = json['vote_count'];
-    firstAirDate = json['first_air_date'];
-    name = json['name'];
-    originCountry = json['origin_country'].cast<String>();
-    originalName = json['original_name'];
   }
 
   Map<String, dynamic> toJson() {
@@ -160,10 +115,6 @@ class KnownFor {
     data['video'] = video;
     data['vote_average'] = voteAverage;
     data['vote_count'] = voteCount;
-    data['first_air_date'] = firstAirDate;
-    data['name'] = name;
-    data['origin_country'] = originCountry;
-    data['original_name'] = originalName;
     return data;
   }
 }
