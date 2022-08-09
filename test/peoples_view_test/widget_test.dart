@@ -38,17 +38,20 @@ void main() {
       await pumpPeoplesView(widgetTester, mockAppStateManager);
       binding.window.physicalSizeTestValue = const Size(400, 200);
       binding.window.devicePixelRatioTestValue = 1.0;
+      addTearDown(widgetTester.binding.window.clearPhysicalSizeTestValue);
     });
 
     testWidgets('Layout test mobile device 600 x 400', (widgetTester) async {
       await pumpPeoplesView(widgetTester, mockAppStateManager);
       binding.window.physicalSizeTestValue = const Size(600, 400);
       binding.window.devicePixelRatioTestValue = 1.0;
+      addTearDown(widgetTester.binding.window.clearPhysicalSizeTestValue);
     });
     testWidgets('Layout test mobile device 1440 x 690', (widgetTester) async {
       await pumpPeoplesView(widgetTester, mockAppStateManager);
       binding.window.physicalSizeTestValue = const Size(1440, 690);
       binding.window.devicePixelRatioTestValue = 1.0;
+      addTearDown(widgetTester.binding.window.clearPhysicalSizeTestValue);
     });
   });
 }
